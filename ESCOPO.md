@@ -31,5 +31,7 @@
         - Agente de monitoramento (Chaves).
         - Gestor das viaturas. (Viaturas)
 
+## Protótipo de Baixa Fidelidade
 
+https://www.figma.com/design/s2nWixlL8aNHrJUJeKrdex/Prot%C3%B3tipo-de-baixa-fidelidade---Projeto-de-LPOO?node-id=1-250&t=msKzWOsqiJ5kdDAi-1
 
