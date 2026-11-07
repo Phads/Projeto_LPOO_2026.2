@@ -36,7 +36,7 @@ public class AppFrame extends JFrame {
 	public AppFrame() {
 		setTitle("Sistema de Logística e Controle da Defesa Civil");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 492, 475);
+		setBounds(100, 100, 1280, 720);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -49,5 +49,4 @@ public class AppFrame extends JFrame {
 		
 		sistemaDeRotas = new CardLayout();
 	}
-
 }

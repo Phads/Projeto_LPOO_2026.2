@@ -10,7 +10,11 @@ public class RecepcaoPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public RecepcaoPanel() {
+		setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(86, 51, 347, 256);
+		add(panel);
 
 	}
-
 }
