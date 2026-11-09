@@ -3,6 +3,7 @@ package view;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -41,8 +42,13 @@ public class LoginPanel extends JPanel {
 		JButton btnNewButton = new JButton("Entrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				java.awt.Container painelPrincipal = getParent();
+				
+				CardLayout proximaTela = (CardLayout) painelPrincipal.getLayout();
+				proximaTela.show(painelPrincipal, "telaAdminRegistrarChaves");
 			}
 		});
+		
 		btnNewButton.setBounds(184, 231, 89, 23);
 		add(btnNewButton);
 		

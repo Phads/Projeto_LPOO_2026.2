@@ -5,8 +5,6 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 
 public class AppFrame extends JFrame {
 
@@ -46,6 +44,8 @@ public class AppFrame extends JFrame {
 		contentPane.add(loginPanel, "name_9118787885100");
 		loginPanel.setLayout(null);
 		
+		AdminRegistrarChavesPanel adminRegistrarChavesPanel = new AdminRegistrarChavesPanel();
+		contentPane.add(adminRegistrarChavesPanel, "telaAdminRegistrarChaves");
 		
 		sistemaDeRotas = new CardLayout();
 	}
