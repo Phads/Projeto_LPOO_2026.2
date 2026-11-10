@@ -47,6 +47,9 @@ public class AppFrame extends JFrame {
 		AdminRegistrarChavesPanel adminRegistrarChavesPanel = new AdminRegistrarChavesPanel();
 		contentPane.add(adminRegistrarChavesPanel, "telaAdminRegistrarChaves");
 		
+		MenuChavesPanel menuChavesPanel = new MenuChavesPanel();
+		contentPane.add(menuChavesPanel, "name_11595737390637500");
+		
 		sistemaDeRotas = new CardLayout();
 	}
 }
