@@ -31,10 +31,6 @@ public class MenuChavesPanel extends JPanel {
     public MenuChavesPanel() {
 
         setBackground(new Color(227, 227, 227));
-
-        JMenuBar menuBar = new JMenuBar();
-        menuBar.setBackground(SystemColor.activeCaptionBorder);
-        menuBar.setPreferredSize(new java.awt.Dimension(0, 38));
         
 
         JButton btnReportar = new JButton("Reportar Perda / Recuperar");
@@ -91,55 +87,32 @@ public class MenuChavesPanel extends JPanel {
         scrollPane.setViewportView(table);
 
         GroupLayout gl_panel = new GroupLayout(this);
-
         gl_panel.setHorizontalGroup(
-            gl_panel.createParallelGroup(Alignment.LEADING)
-                .addGroup(gl_panel.createSequentialGroup()
-                    .addGap(12)
-                    .addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-                        .addComponent(menuBar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(gl_panel.createSequentialGroup()
-                            .addComponent(btnReportar, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
-                            .addGap(8)
-                            .addComponent(btnPDF, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
-                            .addGap(8)
-                            .addComponent(txtBuscar, GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE))
-                        .addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE))
-                    .addGap(12))
+        	gl_panel.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel.createSequentialGroup()
+        			.addGap(12)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+        				.addGroup(gl_panel.createSequentialGroup()
+        					.addComponent(btnReportar, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
+        					.addGap(8)
+        					.addComponent(btnPDF, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
+        					.addGap(8)
+        					.addComponent(txtBuscar, GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE))
+        				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1027, Short.MAX_VALUE))
+        			.addGap(12))
         );
-
         gl_panel.setVerticalGroup(
-            gl_panel.createSequentialGroup()
-                .addGap(5)
-                .addComponent(menuBar, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-                .addGap(8)
-                .addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-                    .addComponent(btnReportar, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPDF, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBuscar, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
-                .addGap(12)
-                .addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-                .addGap(12)
+        	gl_panel.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel.createSequentialGroup()
+        			.addGap(51)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(btnReportar, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(btnPDF, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(txtBuscar, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+        			.addGap(12)
+        			.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+        			.addGap(12))
         );
-        
-        JMenuItem mntmNewMenuItem_5 = new JMenuItem("Visão Geral");
-        mntmNewMenuItem_5.setSelected(true);
-        menuBar.add(mntmNewMenuItem_5);
-        
-        JMenuItem mntmNewMenuItem_4 = new JMenuItem("Chaves de Salas");
-        menuBar.add(mntmNewMenuItem_4);
-        
-        JMenuItem mntmNewMenuItem = new JMenuItem("Viaturas");
-        menuBar.add(mntmNewMenuItem);
-        
-        JMenuItem mntmNewMenuItem_1 = new JMenuItem("Manutenção de Frotas");
-        menuBar.add(mntmNewMenuItem_1);
-        
-        JMenuItem mntmNewMenuItem_2 = new JMenuItem("Portaria/Acesso");
-        menuBar.add(mntmNewMenuItem_2);
-        
-        JMenuItem mntmNewMenuItem_3 = new JMenuItem("Administração");
-        menuBar.add(mntmNewMenuItem_3);
 
         setLayout(gl_panel);
     }
