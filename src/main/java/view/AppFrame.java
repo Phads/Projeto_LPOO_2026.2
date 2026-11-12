@@ -50,6 +50,9 @@ public class AppFrame extends JFrame {
 		MenuChavesPanel menuChavesPanel = new MenuChavesPanel();
 		contentPane.add(menuChavesPanel, "name_11595737390637500");
 		
+		MenuViaturasPanel menuViaturasPanel = new MenuViaturasPanel();
+		contentPane.add(menuViaturasPanel, "name_11853826368504700");
+		
 		sistemaDeRotas = new CardLayout();
 	}
 }
