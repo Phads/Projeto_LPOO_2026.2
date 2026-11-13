@@ -136,13 +136,32 @@ public class AdminUsuariosPermi extends JPanel {
 		panel.add(panel_1, BorderLayout.NORTH);
 
 		JPanel panelEsquerda = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 5));
-		panelEsquerda.add(new JButton("Novo Usuário"));
-		panelEsquerda.add(new JButton("Editar"));
+		JButton button = new JButton("Novo Usuário");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FormCadastrarNovoUsuarioDialog dialogCadastrarUsuario = new FormCadastrarNovoUsuarioDialog();
+				dialogCadastrarUsuario.setLocationRelativeTo(null);
+				dialogCadastrarUsuario.setVisible(true);
+			}
+		});
+		panelEsquerda.add(button);
+		JButton button_1 = new JButton("Editar");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FormEditarUsuarioDialog dialogEditarUsuario = new FormEditarUsuarioDialog();
+				dialogEditarUsuario.setLocationRelativeTo(null);
+				dialogEditarUsuario.setVisible(true);
+			}
+		});
+		panelEsquerda.add(button_1);
 		JButton btnExcluir = new JButton("Excluir"); 
 		panelEsquerda.add(btnExcluir);
 
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				FormExcluirUsuarioDialog dialogExcluirUsuario = new FormExcluirUsuarioDialog();
+				dialogExcluirUsuario.setLocationRelativeTo(null);
+				dialogExcluirUsuario.setVisible(true);
 				int linha = tableUsuarios.getSelectedRow();
 
 				if (linha == -1) {
