@@ -19,6 +19,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBoxMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MenuViaturasPanel extends JPanel {
 
@@ -30,6 +32,10 @@ public class MenuViaturasPanel extends JPanel {
         
 
         JButton btnReportar = new JButton("Cadastrar Manutenção");
+        btnReportar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
         btnReportar.setFont(new Font("Arial", Font.PLAIN, 14));
 
         JButton btnPDF = new JButton("Relatório de Frota (PDF)");

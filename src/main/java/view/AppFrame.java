@@ -92,6 +92,9 @@ public class AppFrame extends JFrame {
 		
 		MenuChavesPanel menuChavesPanel = new MenuChavesPanel();
 		contentPane.add(menuChavesPanel, "name_menuChavesPanel");
+		
+		AdminUsuariosPermi adminUsuariosPermi = new AdminUsuariosPermi();
+		contentPane.add(adminUsuariosPermi, "telaAdminUsuarios");
 	}
 	
 	public void navWindow(String viewName) {
@@ -99,3 +102,4 @@ public class AppFrame extends JFrame {
 	    nav.show(contentPane, viewName);
 	}
 }
+

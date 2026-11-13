@@ -20,6 +20,14 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBoxMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Dimension;
+import javax.swing.JOptionPane;
 
 public class MenuChavesPanel extends JPanel {
 
@@ -34,6 +42,70 @@ public class MenuChavesPanel extends JPanel {
         
 
         JButton btnReportar = new JButton("Reportar Perda / Recuperar");
+        btnReportar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                int linhaSelecionada = table.getSelectedRow();
+
+                if (linhaSelecionada == -1) {
+                    JOptionPane.showMessageDialog(
+                        MenuChavesPanel.this,
+                        "Selecione uma chave na tabela.",
+                        "Mensagem do Sistema",
+                        JOptionPane.WARNING_MESSAGE
+                    );
+                    return;
+                }
+
+                String nomeSala = table.getValueAt(linhaSelecionada, 0).toString();
+                String status = table.getValueAt(linhaSelecionada, 1).toString();
+
+                if (status.equals("Perdida")) {
+
+                    int opcao = JOptionPane.showConfirmDialog(
+                        MenuChavesPanel.this,
+                        "Deseja recuperar a chave da \"" + nomeSala + "\"?",
+                        "Recuperar Chave",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE
+                    );
+
+                    if (opcao == JOptionPane.YES_OPTION) {
+
+                        table.setValueAt("Disponível", linhaSelecionada, 1);
+
+                        JOptionPane.showMessageDialog(
+                            MenuChavesPanel.this,
+                            "A chave da \"" + nomeSala + "\" foi RECUPERADA no sistema.",
+                            "Mensagem do Sistema",
+                            JOptionPane.INFORMATION_MESSAGE
+                        );
+                    }
+
+                } else {
+
+                    int opcao = JOptionPane.showConfirmDialog(
+                        MenuChavesPanel.this,
+                        "Deseja marcar a chave da \"" + nomeSala + "\" como perdida?",
+                        "Reportar Perda",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE
+                    );
+
+                    if (opcao == JOptionPane.YES_OPTION) {
+
+                        table.setValueAt("Perdida", linhaSelecionada, 1);
+
+                        JOptionPane.showMessageDialog(
+                            MenuChavesPanel.this,
+                            "A chave da \"" + nomeSala + "\" foi marcada como PERDIDA no sistema.",
+                            "Mensagem do Sistema",
+                            JOptionPane.INFORMATION_MESSAGE
+                        );
+                    }
+                }
+            }
+        });
         btnReportar.setFont(new Font("Arial", Font.PLAIN, 14));
 
         JButton btnPDF = new JButton("Gerar PDF");
@@ -116,4 +188,6 @@ public class MenuChavesPanel extends JPanel {
 
         setLayout(gl_panel);
     }
+	
+	
 }
