@@ -53,6 +53,10 @@ public class AppFrame extends JFrame {
 		MenuViaturasPanel menuViaturasPanel = new MenuViaturasPanel();
 		contentPane.add(menuViaturasPanel, "name_11853826368504700");
 		
+		AdminUsuariosPermi adminUsuariosPermi = new AdminUsuariosPermi();
+		contentPane.add(adminUsuariosPermi, "telaAdminUsuarios");
+		
 		sistemaDeRotas = new CardLayout();
 	}
 }
+
