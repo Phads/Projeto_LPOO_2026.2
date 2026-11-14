@@ -10,12 +10,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JScrollPane;
-import javax.swing.JTree;
+
 import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.basic.BasicTreeUI;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeCellRenderer;
-import javax.swing.tree.DefaultTreeModel;
 import java.awt.FlowLayout;
 
 import javax.swing.BorderFactory;
@@ -26,24 +22,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.JTable;
+
 
 public class AdminUsuariosPermi extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * Create the panel.
-	 */
-
-	private JScrollPane scrollPane;
-	private JTree tree;
 	private JTable tableUsuarios;
 
 	private Color corDeFundo = new Color(236, 233, 216);
@@ -52,96 +38,21 @@ public class AdminUsuariosPermi extends JPanel {
 		setPreferredSize(new Dimension(1280, 720));
 		setBackground(corDeFundo); //
 		setBorder(new EmptyBorder(10, 10, 10, 10));
-		setLayout(new BorderLayout(10, 10));
+		setLayout(null);
+		//for (Component item : menuBar.getComponents()) {
+		//	((JComponent) item).setOpaque(false);
+		//}
 
-		JPanel menuBar = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 8));
-		menuBar.setBackground(corDeFundo);
-		menuBar.setPreferredSize(new Dimension(0, 38));
-
-		add(menuBar, BorderLayout.NORTH);
-
-		JButton btnNewButton = new JButton("Visão Geral");
-		menuBar.add(btnNewButton);
-
-		JButton btnNewButton_1 = new JButton("Chaves de Salas");
-		menuBar.add(btnNewButton_1);
-
-		JButton btnNewButton_2 = new JButton("Viaturas");
-		menuBar.add(btnNewButton_2);
-
-		JButton btnNewButton_3 = new JButton("Manutenção de Frota");
-		menuBar.add(btnNewButton_3);
-
-		JButton btnNewButton_4 = new JButton("Portaria/Acesso");
-		menuBar.add(btnNewButton_4);
-
-		JButton btnNewButton_5 = new JButton("Administração");
-		menuBar.add(btnNewButton_5);
-
-		menuBar.setOpaque(false);
-		for (Component item : menuBar.getComponents()) {
-			((JComponent) item).setOpaque(false);
-		}
-
-		btnNewButton_5.setFont(btnNewButton_5.getFont().deriveFont(Font.BOLD));
-
-		scrollPane = new JScrollPane();
-		scrollPane.setPreferredSize(new Dimension(220, 0));
-		scrollPane.setBorder(BorderFactory.createLineBorder(new Color(140, 140, 140)));
-
-		add(scrollPane, BorderLayout.WEST);
-
-
-		DefaultMutableTreeNode raiz = new DefaultMutableTreeNode("Raiz");
-
-		DefaultMutableTreeNode config = new DefaultMutableTreeNode("Configurações");
-
-		config.add(new DefaultMutableTreeNode("Usuários e Permissões"));
-		config.add(new DefaultMutableTreeNode("Cadastro de Chaves/Salas"));
-		config.add(new DefaultMutableTreeNode("Cadastro de Viaturas"));
-		config.add(new DefaultMutableTreeNode("Manutenção de Viaturas"));
-
-		DefaultMutableTreeNode auditoria = new DefaultMutableTreeNode("Auditoria de Logs");
-
-		raiz.add(config);
-		auditoria.add(new DefaultMutableTreeNode("Registros"));
-		raiz.add(auditoria);
-
-		tree = new JTree(new DefaultTreeModel(
-			new DefaultMutableTreeNode("Configurações") {
-				{
-					add(new DefaultMutableTreeNode("Usuários e permissões"));
-					add(new DefaultMutableTreeNode("Cadastro de Chaves"));
-					add(new DefaultMutableTreeNode("Cadastro de Viaturas"));
-					add(new DefaultMutableTreeNode("Manutenção de Viaturas"));
-				}
-			}
-		));
-		tree.expandRow(0);
-		tree.setBorder(new EmptyBorder(5, 5, 5, 5));
-		scrollPane.setViewportView(tree); 
-		
-		DefaultTreeCellRenderer visual = (DefaultTreeCellRenderer) tree.getCellRenderer();
-		visual.setLeafIcon(null);
-		visual.setOpenIcon(null);
-		visual.setClosedIcon(null);
-		
-		visual.setBackgroundSelectionColor(new Color(10, 36, 106));
-		visual.setTextSelectionColor(Color.WHITE);
-		visual.setBorderSelectionColor(null);
-		
-		tree.putClientProperty("JTree.lineStyle", "None");
-		tree.setRowHeight(20);
-		
-		tree.setSelectionRow(1);
 
 		JPanel panel = new JPanel();
+		panel.setBounds(240, 58, 1030, 652);
 		panel.setBackground(corDeFundo);
-		add(panel, BorderLayout.CENTER);
-		panel.setLayout(new BorderLayout(0, 0));
+		add(panel);
+		panel.setLayout(null);
 
 		JPanel panel_1 = new JPanel(new BorderLayout(0, 0));
-		panel.add(panel_1, BorderLayout.NORTH);
+		panel_1.setBounds(0, 0, 1030, 31);
+		panel.add(panel_1);
 
 		JPanel panelEsquerda = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		JButton button = new JButton("Novo Usuário");
@@ -191,9 +102,10 @@ public class AdminUsuariosPermi extends JPanel {
 		});
 		panel_1.add(panelEsquerda, BorderLayout.WEST);
 
-		JPanel panelDireita = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+		JPanel panelDireita = new JPanel();
+		panelDireita.setLayout(new CardLayout(0, 0));
 
-		panelDireita.add(new JButton("Gerar PDF"));
+		panelDireita.add(new JButton("Gerar PDF"), "name_12094181666200");
 		panel_1.add(panelDireita, BorderLayout.EAST);
 
 		String[] colunas = { "Nome do Servidor", "Login", "Perfil de Acesso", "Status" };
@@ -213,11 +125,59 @@ public class AdminUsuariosPermi extends JPanel {
 			}
 		});
 		JScrollPane scrollPaneTabela = new JScrollPane(tableUsuarios);
+		scrollPaneTabela.setBounds(0, 31, 1030, 620);
 		scrollPaneTabela.getViewport().setBackground(Color.WHITE);
-		panel.add(scrollPaneTabela, BorderLayout.CENTER);
+		panel.add(scrollPaneTabela);
 
 		tableUsuarios.setRowHeight(30);
 		tableUsuarios.setShowGrid(false);
+		
+		AdminRegistrarChavesPanel adminRegistrarChavesPanel = new AdminRegistrarChavesPanel();
+		adminRegistrarChavesPanel.setBounds(0, 0, 1030, 652);
+		panel.add(adminRegistrarChavesPanel);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(10, 58, 220, 652);
+		add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Configurações");
+		lblNewLabel.setBounds(10, 5, 200, 13);
+		panel_2.add(lblNewLabel);
+		
+		JButton btnNewButton_6 = new JButton("Usuários e permissões");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				adminRegistrarChavesPanel.setVisible(false);
+				panel_1.setVisible(true);
+				scrollPaneTabela.setVisible(true);
+			}
+		});
+		btnNewButton_6.setBounds(10, 28, 200, 20);
+		panel_2.add(btnNewButton_6);
+		
+		JButton btnNewButton_7 = new JButton("Cadastro de Chaves");
+		btnNewButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel_1.setVisible(false);
+				scrollPaneTabela.setVisible(false);
+				adminRegistrarChavesPanel.setVisible(true);
+			}
+		});
+		btnNewButton_7.setBounds(10, 58, 200, 20);
+		panel_2.add(btnNewButton_7);
+		
+		JButton btnNewButton_8 = new JButton("Cadastro de Viaturas");
+		btnNewButton_8.setBounds(10, 88, 200, 20);
+		panel_2.add(btnNewButton_8);
+		
+		JButton btnNewButton_9 = new JButton("Manutenção de Viaturas");
+		btnNewButton_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_9.setBounds(10, 118, 200, 20);
+		panel_2.add(btnNewButton_9);
 		tableUsuarios.getTableHeader().setReorderingAllowed(false);
 		tableUsuarios.getTableHeader().setPreferredSize(new Dimension(0, 32));
 
@@ -230,11 +190,6 @@ public class AdminUsuariosPermi extends JPanel {
 			tableUsuarios.getColumnModel().getColumn(i).setHeaderRenderer(cabecalho);
 		}
 		
-		tree.setShowsRootHandles(true);
-		
-		BasicTreeUI visualArvore = (BasicTreeUI) tree.getUI();
-		visualArvore.setExpandedIcon(new IconeColchete("[-]"));
-		visualArvore.setCollapsedIcon(new IconeColchete("[+]"));
 
 	}
 	
@@ -260,5 +215,4 @@ public class AdminUsuariosPermi extends JPanel {
 			
 		}
 	}
-
 }
