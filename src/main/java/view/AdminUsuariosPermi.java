@@ -78,9 +78,6 @@ public class AdminUsuariosPermi extends JPanel {
 
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FormExcluirUsuarioDialog dialogExcluirUsuario = new FormExcluirUsuarioDialog();
-				dialogExcluirUsuario.setLocationRelativeTo(null);
-				dialogExcluirUsuario.setVisible(true);
 				int linha = tableUsuarios.getSelectedRow();
 
 				if (linha == -1) {
