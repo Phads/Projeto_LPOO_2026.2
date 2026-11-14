@@ -9,6 +9,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.JScrollBar;
+import java.awt.Panel;
+import java.awt.ScrollPane;
+import javax.swing.table.DefaultTableModel;
 
 public class AppFrame extends JFrame {
 
@@ -37,12 +42,17 @@ public class AppFrame extends JFrame {
 	public AppFrame() {
 		setTitle("Sistema de Logística e Controle da Defesa Civil");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1133, 720);
+		setBounds(100, 100, 1400, 701);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Visão Geral");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				navWindow("name_visaoGeralPanel");
+			}
+		});
 		mntmNewMenuItem_5.setSelected(true);
 		menuBar.add(mntmNewMenuItem_5);
 		
@@ -95,6 +105,9 @@ public class AppFrame extends JFrame {
 		
 		AdminUsuariosPermi adminUsuariosPermi = new AdminUsuariosPermi();
 		contentPane.add(adminUsuariosPermi, "telaAdminUsuarios");
+		
+		VisaoGeralPanel visaoGeralPanel = new VisaoGeralPanel();
+		contentPane.add(visaoGeralPanel, "name_visaoGeralPanel");
 	}
 	
 	public void navWindow(String viewName) {

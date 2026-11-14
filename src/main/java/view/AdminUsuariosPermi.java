@@ -6,7 +6,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
-import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JScrollPane;
@@ -20,7 +19,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -39,10 +37,6 @@ public class AdminUsuariosPermi extends JPanel {
 		setBackground(corDeFundo); //
 		setBorder(new EmptyBorder(10, 10, 10, 10));
 		setLayout(null);
-		//for (Component item : menuBar.getComponents()) {
-		//	((JComponent) item).setOpaque(false);
-		//}
-
 
 		JPanel panel = new JPanel();
 		panel.setBounds(240, 58, 1030, 652);
