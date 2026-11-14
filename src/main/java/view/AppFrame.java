@@ -71,7 +71,7 @@ public class AppFrame extends JFrame {
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Administração");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				navWindow("name_adminRegistrarChaves");
+				navWindow("telaAdminUsuarios");
 			}
 		});
 		menuBar.add(mntmNewMenuItem_3);

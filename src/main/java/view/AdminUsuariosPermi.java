@@ -107,8 +107,16 @@ public class AdminUsuariosPermi extends JPanel {
 		auditoria.add(new DefaultMutableTreeNode("Registros"));
 		raiz.add(auditoria);
 
-		tree = new JTree(new DefaultTreeModel(raiz));
-		tree.setRootVisible(false);
+		tree = new JTree(new DefaultTreeModel(
+			new DefaultMutableTreeNode("Configurações") {
+				{
+					add(new DefaultMutableTreeNode("Usuários e permissões"));
+					add(new DefaultMutableTreeNode("Cadastro de Chaves"));
+					add(new DefaultMutableTreeNode("Cadastro de Viaturas"));
+					add(new DefaultMutableTreeNode("Manutenção de Viaturas"));
+				}
+			}
+		));
 		tree.expandRow(0);
 		tree.setBorder(new EmptyBorder(5, 5, 5, 5));
 		scrollPane.setViewportView(tree); 
