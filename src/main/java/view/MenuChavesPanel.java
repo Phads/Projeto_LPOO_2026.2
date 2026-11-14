@@ -20,6 +20,14 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBoxMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Dimension;
+import javax.swing.JOptionPane;
 
 public class MenuChavesPanel extends JPanel {
 
@@ -31,13 +39,73 @@ public class MenuChavesPanel extends JPanel {
     public MenuChavesPanel() {
 
         setBackground(new Color(227, 227, 227));
-
-        JMenuBar menuBar = new JMenuBar();
-        menuBar.setBackground(SystemColor.activeCaptionBorder);
-        menuBar.setPreferredSize(new java.awt.Dimension(0, 38));
         
 
         JButton btnReportar = new JButton("Reportar Perda / Recuperar");
+        btnReportar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                int linhaSelecionada = table.getSelectedRow();
+
+                if (linhaSelecionada == -1) {
+                    JOptionPane.showMessageDialog(
+                        MenuChavesPanel.this,
+                        "Selecione uma chave na tabela.",
+                        "Mensagem do Sistema",
+                        JOptionPane.WARNING_MESSAGE
+                    );
+                    return;
+                }
+
+                String nomeSala = table.getValueAt(linhaSelecionada, 0).toString();
+                String status = table.getValueAt(linhaSelecionada, 1).toString();
+
+                if (status.equals("Perdida")) {
+
+                    int opcao = JOptionPane.showConfirmDialog(
+                        MenuChavesPanel.this,
+                        "Deseja recuperar a chave da \"" + nomeSala + "\"?",
+                        "Recuperar Chave",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE
+                    );
+
+                    if (opcao == JOptionPane.YES_OPTION) {
+
+                        table.setValueAt("Disponível", linhaSelecionada, 1);
+
+                        JOptionPane.showMessageDialog(
+                            MenuChavesPanel.this,
+                            "A chave da \"" + nomeSala + "\" foi RECUPERADA no sistema.",
+                            "Mensagem do Sistema",
+                            JOptionPane.INFORMATION_MESSAGE
+                        );
+                    }
+
+                } else {
+
+                    int opcao = JOptionPane.showConfirmDialog(
+                        MenuChavesPanel.this,
+                        "Deseja marcar a chave da \"" + nomeSala + "\" como perdida?",
+                        "Reportar Perda",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE
+                    );
+
+                    if (opcao == JOptionPane.YES_OPTION) {
+
+                        table.setValueAt("Perdida", linhaSelecionada, 1);
+
+                        JOptionPane.showMessageDialog(
+                            MenuChavesPanel.this,
+                            "A chave da \"" + nomeSala + "\" foi marcada como PERDIDA no sistema.",
+                            "Mensagem do Sistema",
+                            JOptionPane.INFORMATION_MESSAGE
+                        );
+                    }
+                }
+            }
+        });
         btnReportar.setFont(new Font("Arial", Font.PLAIN, 14));
 
         JButton btnPDF = new JButton("Gerar PDF");
@@ -91,56 +159,35 @@ public class MenuChavesPanel extends JPanel {
         scrollPane.setViewportView(table);
 
         GroupLayout gl_panel = new GroupLayout(this);
-
         gl_panel.setHorizontalGroup(
-            gl_panel.createParallelGroup(Alignment.LEADING)
-                .addGroup(gl_panel.createSequentialGroup()
-                    .addGap(12)
-                    .addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-                        .addComponent(menuBar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(gl_panel.createSequentialGroup()
-                            .addComponent(btnReportar, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
-                            .addGap(8)
-                            .addComponent(btnPDF, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
-                            .addGap(8)
-                            .addComponent(txtBuscar, GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE))
-                        .addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE))
-                    .addGap(12))
+        	gl_panel.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel.createSequentialGroup()
+        			.addGap(12)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+        				.addGroup(gl_panel.createSequentialGroup()
+        					.addComponent(btnReportar, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
+        					.addGap(8)
+        					.addComponent(btnPDF, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
+        					.addGap(8)
+        					.addComponent(txtBuscar, GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE))
+        				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1027, Short.MAX_VALUE))
+        			.addGap(12))
         );
-
         gl_panel.setVerticalGroup(
-            gl_panel.createSequentialGroup()
-                .addGap(5)
-                .addComponent(menuBar, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-                .addGap(8)
-                .addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-                    .addComponent(btnReportar, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPDF, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBuscar, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
-                .addGap(12)
-                .addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-                .addGap(12)
+        	gl_panel.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel.createSequentialGroup()
+        			.addGap(51)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(btnReportar, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(btnPDF, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(txtBuscar, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+        			.addGap(12)
+        			.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+        			.addGap(12))
         );
-        
-        JMenuItem mntmNewMenuItem_5 = new JMenuItem("Visão Geral");
-        mntmNewMenuItem_5.setSelected(true);
-        menuBar.add(mntmNewMenuItem_5);
-        
-        JMenuItem mntmNewMenuItem_4 = new JMenuItem("Chaves de Salas");
-        menuBar.add(mntmNewMenuItem_4);
-        
-        JMenuItem mntmNewMenuItem = new JMenuItem("Viaturas");
-        menuBar.add(mntmNewMenuItem);
-        
-        JMenuItem mntmNewMenuItem_1 = new JMenuItem("Manutenção de Frotas");
-        menuBar.add(mntmNewMenuItem_1);
-        
-        JMenuItem mntmNewMenuItem_2 = new JMenuItem("Portaria/Acesso");
-        menuBar.add(mntmNewMenuItem_2);
-        
-        JMenuItem mntmNewMenuItem_3 = new JMenuItem("Administração");
-        menuBar.add(mntmNewMenuItem_3);
 
         setLayout(gl_panel);
     }
+	
+	
 }

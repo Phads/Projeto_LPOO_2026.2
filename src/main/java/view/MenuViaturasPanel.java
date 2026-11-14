@@ -19,6 +19,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBoxMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MenuViaturasPanel extends JPanel {
 
@@ -27,13 +29,13 @@ public class MenuViaturasPanel extends JPanel {
     public MenuViaturasPanel() {
 
     	setBackground(new Color(227, 227, 227));
-
-        JMenuBar menuBar = new JMenuBar();
-        menuBar.setBackground(SystemColor.activeCaptionBorder);
-        menuBar.setPreferredSize(new java.awt.Dimension(0, 38));
         
 
         JButton btnReportar = new JButton("Cadastrar Manutenção");
+        btnReportar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
         btnReportar.setFont(new Font("Arial", Font.PLAIN, 14));
 
         JButton btnPDF = new JButton("Relatório de Frota (PDF)");
@@ -88,46 +90,24 @@ public class MenuViaturasPanel extends JPanel {
         		.addGroup(gl_panel.createSequentialGroup()
         			.addGap(12)
         			.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-        				.addComponent(menuBar, GroupLayout.DEFAULT_SIZE, 1256, Short.MAX_VALUE)
         				.addGroup(gl_panel.createSequentialGroup()
         					.addComponent(btnReportar, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
         					.addGap(8)
         					.addComponent(btnPDF, GroupLayout.PREFERRED_SIZE, 262, GroupLayout.PREFERRED_SIZE))
-        				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1256, Short.MAX_VALUE))
+        				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE))
         			.addGap(12))
         );
         gl_panel.setVerticalGroup(
         	gl_panel.createParallelGroup(Alignment.LEADING)
         		.addGroup(gl_panel.createSequentialGroup()
-        			.addGap(5)
-        			.addComponent(menuBar, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-        			.addGap(8)
+        			.addGap(51)
         			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
         				.addComponent(btnReportar, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
         				.addComponent(btnPDF, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
         			.addGap(12)
-        			.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+        			.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
         			.addGap(12))
         );
-        
-        JMenuItem mntmNewMenuItem_5 = new JMenuItem("Visão Geral");
-        mntmNewMenuItem_5.setSelected(true);
-        menuBar.add(mntmNewMenuItem_5);
-        
-        JMenuItem mntmNewMenuItem_4 = new JMenuItem("Chaves de Salas");
-        menuBar.add(mntmNewMenuItem_4);
-        
-        JMenuItem mntmNewMenuItem = new JMenuItem("Viaturas");
-        menuBar.add(mntmNewMenuItem);
-        
-        JMenuItem mntmNewMenuItem_1 = new JMenuItem("Manutenção de Frotas");
-        menuBar.add(mntmNewMenuItem_1);
-        
-        JMenuItem mntmNewMenuItem_2 = new JMenuItem("Portaria/Acesso");
-        menuBar.add(mntmNewMenuItem_2);
-        
-        JMenuItem mntmNewMenuItem_3 = new JMenuItem("Administração");
-        menuBar.add(mntmNewMenuItem_3);
 
         setLayout(gl_panel);
     }

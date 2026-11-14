@@ -22,20 +22,20 @@ public class LoginPanel extends JPanel {
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Usuário");
-		lblNewLabel.setBounds(91, 104, 46, 14);
+		lblNewLabel.setBounds(339, 210, 46, 14);
 		add(lblNewLabel);
 		
 		txtOpa = new JTextField();
-		txtOpa.setBounds(91, 122, 265, 20);
+		txtOpa.setBounds(339, 228, 265, 20);
 		add(txtOpa);
 		txtOpa.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Senha");
-		lblNewLabel_1.setBounds(91, 153, 46, 14);
+		lblNewLabel_1.setBounds(339, 259, 46, 14);
 		add(lblNewLabel_1);
 		
 		textField = new JTextField();
-		textField.setBounds(91, 174, 265, 20);
+		textField.setBounds(339, 280, 265, 20);
 		add(textField);
 		textField.setColumns(10);
 		
@@ -49,17 +49,17 @@ public class LoginPanel extends JPanel {
 			}
 		});
 		
-		btnNewButton.setBounds(184, 231, 89, 23);
+		btnNewButton.setBounds(432, 337, 89, 23);
 		add(btnNewButton);
 		
 		JLabel lblNewLabel_2 = new JLabel("SEPDEC Gestão Logistica");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(142, 29, 173, 14);
+		lblNewLabel_2.setBounds(390, 135, 173, 14);
 		add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Login");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setBounds(205, 54, 46, 14);
+		lblNewLabel_3.setBounds(453, 160, 46, 14);
 		add(lblNewLabel_3);
 
 	}
