@@ -1,8 +1,7 @@
 package view;
 
+import javax.swing.JPanel;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
@@ -21,10 +20,10 @@ import javax.swing.JOptionPane;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class JanelaPortaria extends JFrame {
+public class JanelaPortariaPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+	private JPanel Panel;
 	private JTable TabelaRegistrosPortariaTable;
 	private JTextField RegistrarNomeText;
 	private JTextField RegistrarPlacaText;
@@ -33,86 +32,24 @@ public class JanelaPortaria extends JFrame {
 	private JTextField RegistrarVeiculoText;
 
 	/**
-	 * Launch the application.
+	 * Create the panel.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JanelaPortaria frame = new JanelaPortaria();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public JanelaPortaria() {
+	public JanelaPortariaPanel() {
+		
+		setLayout(null);
 		setForeground(new Color(255, 241, 230));
 		setBackground(new Color(255, 241, 230));
-		setTitle("Sistema de Logística e Controle da Defesa Civil");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 450);
-		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 255, 255));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JButton ChavedeSalasButton = new JButton("Chaves de sala");
-		ChavedeSalasButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		ChavedeSalasButton.setForeground(new Color(40, 40, 40));
-		ChavedeSalasButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		ChavedeSalasButton.setBackground(new Color(220, 220, 220));
-		ChavedeSalasButton.setBounds(130, 10, 115, 31);
-		contentPane.add(ChavedeSalasButton);
-		
-		JButton VisaoGeralButton = new JButton("Visão geral");
-		VisaoGeralButton.setForeground(new Color(40, 40, 40));
-		VisaoGeralButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		VisaoGeralButton.setBackground(new Color(220, 220, 220));
-		VisaoGeralButton.setBounds(10, 10, 122, 31);
-		contentPane.add(VisaoGeralButton);
-		
-		JButton ViaturasButton = new JButton("Viaturas");
-		ViaturasButton.setForeground(new Color(40, 40, 40));
-		ViaturasButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		ViaturasButton.setBackground(new Color(220, 220, 220));
-		ViaturasButton.setBounds(243, 10, 115, 31);
-		contentPane.add(ViaturasButton);
-		
-		JButton PortariaButton = new JButton("Portaria/Acesso");
-		PortariaButton.setForeground(new Color(40, 40, 40));
-		PortariaButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		PortariaButton.setBackground(new Color(220, 220, 220));
-		PortariaButton.setBounds(356, 10, 132, 31);
-		contentPane.add(PortariaButton);
-		
-		JButton ManutencaoFrotasButton = new JButton("Manutenção de frotas");
-		ManutencaoFrotasButton.setForeground(new Color(40, 40, 40));
-		ManutencaoFrotasButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		ManutencaoFrotasButton.setBackground(new Color(220, 220, 220));
-		ManutencaoFrotasButton.setBounds(487, 10, 175, 31);
-		contentPane.add(ManutencaoFrotasButton);
-		
-		JButton AdministracaoButton = new JButton("Administração");
-		AdministracaoButton.setForeground(new Color(40, 40, 40));
-		AdministracaoButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		AdministracaoButton.setBackground(new Color(220, 220, 220));
-		AdministracaoButton.setBounds(661, 10, 115, 31);
-		contentPane.add(AdministracaoButton);
+		Panel = new JPanel();
+		Panel.setBackground(new Color(255, 255, 255));
+		Panel.setBounds(0, 0, 800, 450);
+		Panel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		Panel.setLayout(null);
 		
 		JPanel CameraPanel = new JPanel();
 		CameraPanel.setBackground(new Color(0, 0, 0));
 		CameraPanel.setBounds(10, 51, 766, 124);
-		contentPane.add(CameraPanel);
+		Panel.add(CameraPanel);
 		CameraPanel.setLayout(null);
 		
 		JLabel CameraAtualLabel = new JLabel("Câmera 01 - Entrada principal");
@@ -123,7 +60,7 @@ public class JanelaPortaria extends JFrame {
 		
 		JScrollPane TabelaPortariaScrollPane = new JScrollPane();
 		TabelaPortariaScrollPane.setBounds(10, 264, 766, 139);
-		contentPane.add(TabelaPortariaScrollPane);
+		Panel.add(TabelaPortariaScrollPane);
 		
 		TabelaRegistrosPortariaTable = new JTable();
 		TabelaRegistrosPortariaTable.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -141,7 +78,7 @@ public class JanelaPortaria extends JFrame {
 		JPanel RegistroEntradaSaidaPanel = new JPanel();
 		RegistroEntradaSaidaPanel.setBackground(new Color(255, 241, 230));
 		RegistroEntradaSaidaPanel.setBounds(10, 179, 766, 81);
-		contentPane.add(RegistroEntradaSaidaPanel);
+		Panel.add(RegistroEntradaSaidaPanel);
 		RegistroEntradaSaidaPanel.setLayout(null);
 		
 		JLabel RegistrarEntradaLabel = new JLabel("Novo registro de entrada");
@@ -198,22 +135,22 @@ public class JanelaPortaria extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String Nome = RegistrarNomeText.getText().trim();
 				if (Nome.isEmpty()) {
-					JOptionPane.showMessageDialog(JanelaPortaria.this, "O item 'Nome' está em branco");
+					JOptionPane.showMessageDialog(JanelaPortariaPanel.this, "O item 'Nome' está em branco");
 					return;
 				}
 				String Placa = RegistrarPlacaText.getText().trim();
 				if (Placa.isEmpty()) {
-					JOptionPane.showMessageDialog(JanelaPortaria.this, "O item 'Placa' está em branco");
+					JOptionPane.showMessageDialog(JanelaPortariaPanel.this, "O item 'Placa' está em branco");
 					return;
 				}
 				String Veiculo = RegistrarVeiculoText.getText().trim();
 				if (Veiculo.isEmpty()) {
-					JOptionPane.showMessageDialog(JanelaPortaria.this, "O item 'Veículo' está em branco");
+					JOptionPane.showMessageDialog(JanelaPortariaPanel.this, "O item 'Veículo' está em branco");
 					return;
 				}
 				String Documento = RegistrarDocumentoText.getText().trim();
 				if (Documento.isEmpty()) {
-					JOptionPane.showMessageDialog(JanelaPortaria.this, "O item 'Documento' está em branco");
+					JOptionPane.showMessageDialog(JanelaPortariaPanel.this, "O item 'Documento' está em branco");
 					return;
 				}
 				String VeiculoPlaca = Veiculo + ": " + Placa;
@@ -227,7 +164,7 @@ public class JanelaPortaria extends JFrame {
 				RegistrarPlacaText.setText("");
 				RegistrarVeiculoText.setText("");
 				RegistrarDocumentoText.setText("");
-				JOptionPane.showMessageDialog(JanelaPortaria.this, "Registro confirmado");
+				JOptionPane.showMessageDialog(JanelaPortariaPanel.this, "Registro confirmado");
 			}
 		});
 		RegistrarButton.setBackground(new Color(220, 220, 220));
@@ -245,6 +182,8 @@ public class JanelaPortaria extends JFrame {
 		RegistrarVeiculoText.setColumns(10);
 		RegistrarVeiculoText.setBounds(307, 22, 134, 18);
 		RegistroEntradaSaidaPanel.add(RegistrarVeiculoText);
+		add(Panel);
 
 	}
+
 }

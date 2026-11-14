@@ -76,6 +76,11 @@ public class AppFrame extends JFrame {
 		menuBar.add(mntmNewMenuItem_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Portaria/Acesso");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				navWindow("name_JanelaPortariaPanel");
+			}
+		});
 		menuBar.add(mntmNewMenuItem_2);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Administração");
@@ -108,6 +113,9 @@ public class AppFrame extends JFrame {
 		
 		VisaoGeralPanel visaoGeralPanel = new VisaoGeralPanel();
 		contentPane.add(visaoGeralPanel, "name_visaoGeralPanel");
+		
+		JanelaPortariaPanel janelaPortariaPanel = new JanelaPortariaPanel();
+		contentPane.add(janelaPortariaPanel, "name_JanelaPortariaPanel");
 	}
 	
 	public void navWindow(String viewName) {
