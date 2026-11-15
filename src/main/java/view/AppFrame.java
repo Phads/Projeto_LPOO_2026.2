@@ -9,6 +9,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.JScrollBar;
+import java.awt.Panel;
+import java.awt.ScrollPane;
+import javax.swing.table.DefaultTableModel;
 
 public class AppFrame extends JFrame {
 
@@ -37,12 +42,17 @@ public class AppFrame extends JFrame {
 	public AppFrame() {
 		setTitle("Sistema de Logística e Controle da Defesa Civil");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1133, 720);
+		setBounds(100, 100, 1400, 701);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Visão Geral");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				navWindow("name_visaoGeralPanel");
+			}
+		});
 		mntmNewMenuItem_5.setSelected(true);
 		menuBar.add(mntmNewMenuItem_5);
 		
@@ -66,12 +76,17 @@ public class AppFrame extends JFrame {
 		menuBar.add(mntmNewMenuItem_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Portaria/Acesso");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				navWindow("name_JanelaPortariaPanel");
+			}
+		});
 		menuBar.add(mntmNewMenuItem_2);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Administração");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				navWindow("name_adminRegistrarChaves");
+				navWindow("telaAdminUsuarios");
 			}
 		});
 		menuBar.add(mntmNewMenuItem_3);
@@ -100,6 +115,12 @@ public class AppFrame extends JFrame {
 		contentPane.add(adminUsuariosPermi, "telaAdminUsuarios");
 		CadastroViaturaPanel cadastroViaturaPanel = new CadastroViaturaPanel();
 		contentPane.add(cadastroViaturaPanel, "name_cadastroViaturaPanel");
+
+		VisaoGeralPanel visaoGeralPanel = new VisaoGeralPanel();
+		contentPane.add(visaoGeralPanel, "name_visaoGeralPanel");
+
+		JanelaPortariaPanel janelaPortariaPanel = new JanelaPortariaPanel();
+		contentPane.add(janelaPortariaPanel, "name_JanelaPortariaPanel");
 	}
 	
 	public void navWindow(String viewName) {
