@@ -75,6 +75,9 @@ public class AppFrame extends JFrame {
 			}
 		});
 		menuBar.add(mntmNewMenuItem_3);
+		JMenuItem mntmCadastroViatura = new JMenuItem("Cadastrar Viatura");
+		mntmCadastroViatura.addActionListener(e -> navWindow("name_cadastroViaturaPanel"));
+		menuBar.add(mntmCadastroViatura);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -95,6 +98,8 @@ public class AppFrame extends JFrame {
 		
 		AdminUsuariosPermi adminUsuariosPermi = new AdminUsuariosPermi();
 		contentPane.add(adminUsuariosPermi, "telaAdminUsuarios");
+		CadastroViaturaPanel cadastroViaturaPanel = new CadastroViaturaPanel();
+		contentPane.add(cadastroViaturaPanel, "name_cadastroViaturaPanel");
 	}
 	
 	public void navWindow(String viewName) {
