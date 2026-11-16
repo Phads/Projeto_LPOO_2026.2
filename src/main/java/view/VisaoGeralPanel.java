@@ -5,7 +5,6 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -20,7 +19,7 @@ public class VisaoGeralPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public VisaoGeralPanel() {
-		setBackground(new Color(253, 245, 217));
+		setBackground(new Color(192, 192, 192));
 		setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -87,8 +86,8 @@ public class VisaoGeralPanel extends JPanel {
 		lblNewLabel_1_2.setBounds(10, 32, 306, 40);
 		panel_2.add(lblNewLabel_1_2);
 		
-		JButton btnNewButtonGerarPdf = new JButton("Gerar Relatório Geral (PDF)");
-		btnNewButtonGerarPdf.setBounds(30, 0, 185, 34);
+		JButton btnNewButtonGerarPdf = new JButton("Relatório (PDF)");
+		btnNewButtonGerarPdf.setBounds(30, 10, 129, 24);
 		add(btnNewButtonGerarPdf);
 		
 		JLabel lblNewLabelTitulo = new JLabel("Atividade Recente (Tempo Real)");
