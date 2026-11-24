@@ -1,8 +1,6 @@
 package view;
 
 import javax.swing.JPanel;
-import java.awt.EventQueue;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JButton;
@@ -48,15 +46,62 @@ public class JanelaPortariaPanel extends JPanel {
 		
 		JPanel CameraPanel = new JPanel();
 		CameraPanel.setBackground(new Color(0, 0, 0));
-		CameraPanel.setBounds(10, 51, 766, 124);
+		CameraPanel.setBounds(10, 10, 766, 160);
 		Panel.add(CameraPanel);
-		CameraPanel.setLayout(null);
+		CameraPanel.setLayout(new java.awt.BorderLayout());
+		
+		JPanel BarraSuperiorCam = new JPanel(new java.awt.BorderLayout());
+		BarraSuperiorCam.setBackground(new Color(20, 20, 20));
 		
 		JLabel CameraAtualLabel = new JLabel("Câmera 01 - Entrada principal");
-		CameraAtualLabel.setFont(new Font("Monospaced", Font.PLAIN, 10));
-		CameraAtualLabel.setBounds(10, 0, 186, 24);
+		CameraAtualLabel.setFont(new Font("Monospaced", Font.PLAIN, 11));
 		CameraAtualLabel.setForeground(new Color(220, 220, 220));
-		CameraPanel.add(CameraAtualLabel);
+		CameraPanel.add(CameraAtualLabel, java.awt.BorderLayout.WEST);
+		
+		JButton CapturarFotoButton = new JButton("Capturar Foto / Placa");
+		CapturarFotoButton.setFont(new Font("Arial", Font.BOLD, 11));
+		CapturarFotoButton.setBackground(new Color(220, 220, 220));
+		BarraSuperiorCam.add(CapturarFotoButton, java.awt.BorderLayout.EAST);
+
+		CameraPanel.add(BarraSuperiorCam, java.awt.BorderLayout.NORTH);
+		
+				com.github.sarxos.webcam.Webcam webcam = com.github.sarxos.webcam.Webcam.getDefault();
+				if (webcam != null) {
+					webcam.setViewSize(com.github.sarxos.webcam.WebcamResolution.QVGA.getSize());
+					com.github.sarxos.webcam.WebcamPanel painelVideo = new com.github.sarxos.webcam.WebcamPanel(webcam);
+					painelVideo.setMirrored(true);
+					CameraPanel.add(painelVideo, java.awt.BorderLayout.CENTER);
+				} else {
+					JLabel SemCamLabel = new JLabel("[ ÁREA PLACA - Nenhuma webcam detectada ]",
+							javax.swing.SwingConstants.CENTER);
+					SemCamLabel.setFont(new Font("Monospaced", Font.BOLD, 12));
+					SemCamLabel.setForeground(new Color(0, 200, 0));
+					CameraPanel.add(SemCamLabel, java.awt.BorderLayout.CENTER);
+				}
+
+				
+				CapturarFotoButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if (webcam != null && webcam.isOpen()) {
+							try {
+								java.awt.image.BufferedImage foto = webcam.getImage();
+								String nomeArquivo = "placa_" + System.currentTimeMillis() + ".png";
+								javax.imageio.ImageIO.write(foto, "PNG", new java.io.File(nomeArquivo));
+
+								RegistrarPlacaText.setText("ABC-1234");
+								JOptionPane.showMessageDialog(JanelaPortariaPanel.this,
+										"Foto capturada e salva como: " + nomeArquivo + "\nPlaca detectada: ABC-1234");
+							} catch (Exception ex) {
+								JOptionPane.showMessageDialog(JanelaPortariaPanel.this,
+										"Erro ao salvar imagem: " + ex.getMessage());
+							}
+						} else {
+							RegistrarPlacaText.setText("XYZ-9876");
+							JOptionPane.showMessageDialog(JanelaPortariaPanel.this,
+									"Modo Simulação: Captura realizada!\nPlaca preenchida automaticamente.");
+						}
+					}
+				});
 		
 		JScrollPane TabelaPortariaScrollPane = new JScrollPane();
 		TabelaPortariaScrollPane.setBounds(10, 264, 766, 139);

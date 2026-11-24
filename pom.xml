@@ -3,4 +3,12 @@
   <groupId>sistema.gestaoDefesaCivil</groupId>
   <artifactId>projeto-lpoo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>com.github.sarxos</groupId>
+  		<artifactId>webcam-capture</artifactId>
+  		<version>0.3.12</version>
+  	</dependency>
+  </dependencies>
 </project>
